@@ -1,0 +1,37 @@
+<div class="{{classMolecule + ' input-group ' + config}}">
+  <atom-label
+    [for]="controlName"
+    [value]="valueLabel"
+    [class]="classLabel"
+  >
+  </atom-label>
+
+  <atom-input-email
+    [id]="idInput"
+    [name]="controlName"
+    [placeholder]="placeholder"
+    [class]="'has-validation no-right-border' + classInput"
+    [control]="control"
+    [maxlength]="maxlength"
+    (eventFocusOut)="focusOut()"
+    (eventFocusIn)="focusIn()"
+  >
+  </atom-input-email>
+
+  <div
+    class="input-group-text fa"
+    [class.is-invalid]="control.invalid && control.touched"
+    [class.is-valid]="control.valid && control.touched"
+  >
+    <atom-icon [class]="colorIcon">
+      {{icone}}
+    </atom-icon>
+  </div>
+
+  <atom-invalid-message
+    [control]="control"
+    [errorTable]="errorTable"
+  >
+  </atom-invalid-message>
+
+</div>

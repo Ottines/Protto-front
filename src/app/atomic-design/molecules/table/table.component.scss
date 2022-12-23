@@ -1,0 +1,123 @@
+@use "src/assets/scss/variables" as *;
+
+.mat-table {
+  background-color: grey;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  .mat-column-action {
+    flex: 0 0 25%;
+    justify-content: flex-end;
+  }
+  .mat-row, .mat-header-row, .mat-footer-row, {
+    border-bottom-color: rgba(255,255,255,0.2);
+  }
+
+  &.border-black{
+    .mat-row, .mat-header-row {
+      border-bottom-color: rgba(0, 0, 0, .12) !important;
+    }
+  }
+
+  &.overflow-200 {
+    max-height: 200px;
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  &.overflow-400{
+      max-height: 400px;
+      width: 100%;
+      overflow-y: auto;
+  }
+}
+
+::ng-deep .mat-sort-header-arrow {
+  color: $white !important;
+}
+
+.ellipse {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+// override material paginator
+::ng-deep .mat-paginator {
+  background-color: grey;
+  color: $white;
+
+  .mat-paginator-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .mat-paginator-page-size {
+    margin-right: auto;
+
+    .mat-select-arrow, .mat-select-value{
+      color: $white;
+    }
+
+    .mat-form-field-underline {
+      background-color: $white;
+    }
+  }
+
+  .mat-paginator-range-actions {
+    margin-left: auto;
+  }
+
+  .mat-paginator-navigation-previous {
+    order: 1;
+  }
+
+  .mat-paginator-range-label {
+    order: 2;
+  }
+
+  .mat-paginator-navigation-next {
+    order: 3;
+  }
+
+  .mat-paginator-navigation-last {
+    order: 4;
+  }
+
+  .mat-form-field-flex {
+    color: $white;
+  }
+}
+
+atom-table-cell, atom-table-header-cell{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  word-wrap: break-word;
+  min-height: inherit;
+}
+
+atom-table-cell:first-of-type, atom-table-header-cell:first-of-type{
+  padding-left: 24px;
+}
+
+atom-table-cell:last-of-type, atom-table-header-cell:last-of-type{
+  padding-right: 24px;
+  flex: 0 0 25%;
+  justify-content: flex-end;
+}
+
+.flex{
+  width:100%;
+  display: flex;
+}
+
+.inline{
+  display: inline;
+}
+
+molecule-button-with-icon {
+  width: min-content;
+}

@@ -1,0 +1,17 @@
+:host {
+  div[class="align-btn-icon"] {
+    display: flex;
+  }
+
+  @media all and (max-width: 750px) {
+    /* quand screen trop petit changer style btn */
+    .hide {
+      contain: strict;
+      margin: 0 !important;
+    }
+  }
+
+  atom-icon {
+    width: min-content;
+  }
+}

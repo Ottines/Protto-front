@@ -1,0 +1,28 @@
+:host{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  mat-icon {
+    &.delete{
+      color: #ce0101 !important;
+    }
+    &.blank, &.white-icon{
+      color: #ffffff;
+    }
+    &.black {
+      color: black !important;
+    }
+    &.disabled{
+      color: rgba(0,0,0,.26);
+      cursor: default;
+    }
+  }
+
+  span {
+    color: black !important;
+    font-weight: bold !important;
+  }
+}

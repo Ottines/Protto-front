@@ -1,0 +1,111 @@
+<div
+  class="my-4 flex"
+  *ngIf="tableName || btnAjouter"
+>
+  <div class="w-25 inline">
+  </div>
+  <div class="w-50"  >
+    <atom-title
+      *ngIf="tableName"
+      class="text-center"
+      [taille]="2"
+    >
+      {{tableName | translate}}
+    </atom-title>
+  </div>
+  <div class="w-25 justify-content-end d-flex">
+    <molecule-button-with-icon
+      class="ajouter"
+      *ngIf="btnAjouter"
+      [type]="'button'"
+      [nameIcon]="'add'"
+      [nameButton]="nomAjouter"
+      [routerLink]="routeAjouter"
+    >
+    </molecule-button-with-icon>
+  </div>
+</div>
+<div class="mat-elevation-z8">
+
+  <mat-table
+    matSort
+    class="{{class + 'rounded'}}"
+    [dataSource]="dataSource"
+    (matSortChange)="sortPage($event)"
+  >
+
+    <ng-container *ngFor="let colId of displayedColumn; let i=index">
+
+      <ng-container matColumnDef="{{colId}}">
+
+        <atom-table-header-cell
+          *matHeaderCellDef
+          [headerId]="colId"
+        >
+          {{displayedColumnName[i]}}
+        </atom-table-header-cell>
+
+        <atom-table-cell
+          *matCellDef="let row;"
+          [column]="getRowCell(row, colId)"
+        >
+          {{getRowCell(row, colId)}}
+        </atom-table-cell>
+
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="action1 || action2 || action3">
+      <ng-container matColumnDef="action">
+        <atom-table-header-cell *matHeaderCellDef></atom-table-header-cell>
+
+        <atom-table-cell
+          *matCellDef="let row;"
+          [action]="true"
+        >
+          <molecule-button-with-icon
+            *ngIf="action1"
+            [type]="'button'"
+            [nameIcon]="parseButtonParam(action1.name, row.indexName)"
+            [class]="parseButtonParam(action1.color, row.indexName)"
+            [matTooltip]="parseButtonParam(action1.displayName, row.indexName) | translate"
+            (click)="emitAction1(row)">
+          </molecule-button-with-icon>
+
+          <molecule-button-with-icon
+            *ngIf="action2"
+            [type]="'button'"
+            [nameIcon]="parseButtonParam(action2.name, row.indexName)"
+            [class]="parseButtonParam(action2.color, row.indexName)"
+            [matTooltip]="parseButtonParam(action2.displayName, row.indexName) | translate"
+            (click)="emitAction2(row)">
+          </molecule-button-with-icon>
+
+          <molecule-button-with-icon
+            *ngIf="action3"
+            [type]="'button'"
+            [nameIcon]="parseButtonParam(action3.name, row.indexName)"
+            [class]="parseButtonParam(action3.color, row.indexName)"
+            [matTooltip]="parseButtonParam(action3.displayName, row.indexName) | translate"
+            (click)="emitAction3(row)">
+          </molecule-button-with-icon>
+        </atom-table-cell>
+      </ng-container>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumnWithButton"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumnWithButton"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator
+    *ngIf="pagination"
+    showFirstLastButtons
+    [pageIndex]="indexPage"
+    [pageSize]="elementsPerPage"
+    [pageSizeOptions]="[5, 10, 20]"
+    [length]="totalElements"
+    (page)="getPage($event.pageIndex, $event.pageSize)"
+  >
+  </mat-paginator>
+</div>

@@ -1,0 +1,26 @@
+<div class="{{classMolecule + ' ' + config}}">
+  <atom-label
+    [for]="controlName"
+    [value]="valueLabel"
+    [class]="classLabel"
+  >
+  </atom-label>
+
+  <atom-input-email
+    [id]="idInput"
+    [name]="controlName"
+    [placeholder]="placeholder"
+    [class]="classInput"
+    [control]="control"
+    [maxlength]="maxlength"
+    (eventFocusIn)="focusIn()"
+    (eventFocusOut)="focusOut()"
+  >
+  </atom-input-email>
+
+  <atom-invalid-message
+    [control]="control"
+    [errorTable]="errorTable"
+  >
+  </atom-invalid-message>
+</div>

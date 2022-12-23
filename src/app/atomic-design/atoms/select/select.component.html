@@ -1,0 +1,24 @@
+<div class="d-grid">
+  <atom-label
+    [class]="class"
+    [value]="label"
+  >
+  </atom-label>
+
+  <select
+    [class] = "'form-select mt-2 dis'"
+    (change)="setIdSelected($any($event.target).value)"
+    [formControl]="control"
+    [class.is-invalid]="control?.invalid && control?.touched"
+    [class.is-valid]="control?.valid && control?.touched"
+  >
+
+    <ng-container *ngFor="let l of list ">
+      <option *ngIf="l.id === -1" [value]="l.id" disabled>{{l?.name | translate}}</option>
+      <option *ngIf="l.id !== -1" [value]="l.id">{{l?.name | translate}}</option>
+    </ng-container>
+
+
+  </select>
+</div>
+

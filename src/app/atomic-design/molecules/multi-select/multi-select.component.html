@@ -1,0 +1,27 @@
+<div class="{{classMolecule + ' multiselect'}}">
+
+  <atom-label
+    [class]="'mb-2 ' + classLabel"
+    [value]="valueLabel"
+    [for]="controlName"
+  >
+  </atom-label>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-select
+      multiple
+      disableOptionCentering
+      [placeholder]="placeholder"
+      [formControl]="control"
+      [compareWith]="comparator"
+      (closed)="closed()"
+    >
+      <mat-option *ngFor="let choice of choices"
+                  [value]="choice"
+      >
+        {{choice.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+

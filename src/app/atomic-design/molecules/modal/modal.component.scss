@@ -1,0 +1,81 @@
+@use 'src/assets/scss/variables' as bootstrap;
+
+.modal-body {
+  max-height: 300px;
+  overflow-y: auto;
+
+}
+
+.overlay-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0;
+  display: none;
+}
+
+.overlay-modal.modal-show {
+  display: block;
+  opacity: 0.4;
+  animation: fadeInBackground 0.4s;
+}
+
+.overlay-modal.modal-hide {
+  opacity: 0;
+  animation: fadeOutBackground 0.4s;
+}
+
+.modal.fade.show {
+  display: block;
+  animation: fadeIn 0.4s;
+}
+
+.modal.fade.hide{
+  animation: fadeOut 0.4s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(0, -50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0px);
+  }
+}
+
+@keyframes fadeInBackground {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.4;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    transform: translate(0, 0px);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(0, -50px);
+  }
+}
+
+@keyframes fadeOutBackground {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 0;
+  }
+}

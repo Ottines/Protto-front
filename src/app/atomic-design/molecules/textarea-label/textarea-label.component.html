@@ -1,0 +1,30 @@
+<div class="{{classMolecule}}">
+
+  <atom-label
+    [for]="controlName"
+    [value]="valueLabel"
+    [class]="classLabel"
+  >
+  </atom-label>
+
+  <atom-textarea
+    [id]="idTextarea"
+    [class]=" 'has-validation ' + classTextarea"
+    [control]="control"
+    [disabled]="disabledTextarea"
+    [controlName]="controlName"
+    [maxlength]="maxlength"
+    [placeholder]="placeholder"
+    (eventFocusIn)="focusIn()"
+    (eventFocusOut)="focusOut()"
+  >
+  </atom-textarea>
+
+  <atom-invalid-message
+    [control]="control"
+    [errorTable]="errorTable"
+  >
+
+  </atom-invalid-message>
+
+</div>

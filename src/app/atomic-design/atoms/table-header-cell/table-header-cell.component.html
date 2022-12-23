@@ -1,0 +1,9 @@
+<mat-header-cell *ngIf="!headerId">
+
+</mat-header-cell>
+
+<mat-header-cell mat-sort-header="{{headerId}}" *ngIf="headerId">
+  <atom-title class="text-white" [taille]="6">
+    <ng-content></ng-content>
+  </atom-title>
+</mat-header-cell>

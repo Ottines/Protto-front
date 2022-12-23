@@ -1,0 +1,14 @@
+<textarea
+  id="{{id}}"
+  class="{{'form-control ' + class}}"
+  name="{{controlName}}"
+  placeholder="{{placeholder}}"
+  maxlength="{{maxlength}}"
+  [disabled]="disabled"
+  [formControl]="control"
+  [class.is-invalid]="control.invalid && control.touched"
+  [class.is-valid]="control.valid && control.touched"
+  (focusin)="focusIn()"
+  (focusout)="focusOut()"
+>
+</textarea>

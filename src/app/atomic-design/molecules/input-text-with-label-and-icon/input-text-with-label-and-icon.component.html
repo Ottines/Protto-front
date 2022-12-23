@@ -1,0 +1,36 @@
+<div class="{{classMolecule + ' ' + config}}">
+  <atom-label
+    [class]="classeLabel"
+    [for]="forLabel"
+    [value]="valueLabel"
+  >
+  </atom-label>
+
+  <div class="input-with-icon">
+    <atom-input-text
+      [class]="classInput"
+      [name]="forLabel"
+      [maxLength]=maxLengthInput
+      [placeholder]="placeholderInput"
+      [control]="formControlInput"
+      [numberOfDigits]="numberDigits"
+      (focusInEvent)="focusIn()"
+      (focusOutEvent)="focusOut()"
+    >
+    </atom-input-text>
+    <div class="icon-container" [ngClass]="isValidOrInvalidOrNothing()">
+      <atom-icon
+        class="text-center"
+        [isText]="isTextIcon"
+      >
+        {{nameIcon}}
+      </atom-icon>
+    </div>
+  </div>
+
+  <atom-invalid-message
+    [control]="formControlInput"
+    [errorTable]="errorTable"
+  >
+  </atom-invalid-message>
+</div>

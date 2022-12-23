@@ -1,0 +1,11 @@
+:host {
+
+  button {
+    opacity: 1 !important;
+  }
+
+  button:disabled {
+    opacity: 0.20 !important;
+  }
+
+}

@@ -1,0 +1,22 @@
+<ng-template #content><ng-content></ng-content></ng-template>
+
+<ng-container *ngIf="!isAction()">
+  <ng-container *ngIf="isListNeeded(column)">
+    <div class="d-grid gap-1 my-2">
+      <div *ngFor="let item of column">
+        <div class="ellipse">
+          {{item.name}}
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!isListNeeded(column)">
+    <div class="ellipse" [matTooltip]="column">
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="isAction()">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</ng-container>

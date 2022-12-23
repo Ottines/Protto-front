@@ -1,0 +1,72 @@
+@use "src/assets/scss/variables" as *;
+
+::ng-deep .mat-option {
+  background-color: inherit !important;
+}
+
+::ng-deep mat-option:hover {
+  background: rgba(0, 0, 0, .04) !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .cdk-overlay-container .cdk-overlay-pane {
+  margin-top: unset !important;
+}
+
+::ng-deep .mat-autocomplete-panel {
+  margin-top: 2px !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+::ng-deep .mat-input-element {
+  box-sizing: border-box !important;
+  background-color: white !important;
+  color: initial !important;
+
+  &.is-valid, &.is-invalid {
+    border-style: solid;
+    border-width: 1px;
+  }
+}
+
+::ng-deep .mat-form-field-flex {
+  height: 38px !important;
+  padding: unset !important;
+}
+
+::ng-deep .mat-form-field-infix {
+  height: 38px !important;
+  padding: unset !important;
+
+  input:focus {
+    box-shadow: none !important;
+    border-color: $blue;
+  }
+
+  input {
+    position: relative !important;
+    margin-top: -14px !important;
+    padding-right: 30px !important;
+    padding-left: 16px !important;
+    height: 38px;
+  }
+
+  .form-control {
+    padding-left: unset;
+    padding-right: unset;
+  }
+
+  input:focus {
+    &.is-valid {
+      border-color: $blue !important;
+    }
+
+    &.is-invalid {
+      border-color: $blue !important;
+    }
+  }
+}

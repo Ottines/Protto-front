@@ -1,0 +1,27 @@
+<div class="{{classMolecule + ' ' + config}}">
+  <atom-label
+    [class]="classeLabel"
+    [for]="forLabel"
+    [value]="valueLabel"
+  >
+  </atom-label>
+
+  <atom-input-text
+    [id]="idInput"
+    [class]="classInput"
+    [name]="forLabel"
+    [maxLength]=maxLengthInput
+    [placeholder]="placeholderInput"
+    [control]="formControlInput"
+    [numberOfDigits]="numberDigits"
+    (focusInEvent)="emitFocusInInput()"
+    (focusOutEvent)="emitFocusOutInput()"
+  >
+  </atom-input-text>
+
+  <atom-invalid-message
+    [control]="formControlInput"
+    [errorTable]="errorTableInput"
+  >
+  </atom-invalid-message>
+</div>

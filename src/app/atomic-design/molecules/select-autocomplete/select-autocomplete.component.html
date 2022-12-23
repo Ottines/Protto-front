@@ -1,0 +1,37 @@
+<div class="{{classMolecule}}">
+  <atom-label
+    [class]="'mb-2'"
+    [value]="valueLabel"
+  >
+  </atom-label>
+
+  <mat-form-field class="w-100 example-full-width" appearance="fill">
+    <input
+      type="text"
+      placeholder="{{placeholder}}"
+      matInput
+      [matAutocomplete]="auto"
+      [class]="'form-control has-validation'"
+      [class.is-invalid]="control.invalid && control.touched"
+      [class.is-valid]="control.valid && control.touched"
+      [formControl]="control"
+      (change)="formChanged()"
+    >
+
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of filteredOptions | async  "
+        [value]="option.name"
+        (onSelectionChange)="showOption(option)"
+      >
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+
+    <atom-invalid-message
+      [control]="control"
+      [errorTable]="errorTable"
+    >
+    </atom-invalid-message>
+  </mat-form-field>
+</div>

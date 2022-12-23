@@ -1,0 +1,52 @@
+<div class="modal fade"
+     role="dialog"
+     [id]="id"
+     [class.show]="isOpen"
+     [attr.aria-labelledby]="ariaLabelledby"
+     tabindex="-1" #modal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <atom-title
+          [classTitle]="'modal-title'"
+          [taille]=4
+        >
+          {{titre | translate}}
+        </atom-title>
+        <atom-button
+          [class]="'btn-close'"
+          (click)="annuler()"
+        >
+        </atom-button>
+      </div>
+      <div class="modal-body">
+        <atom-text>
+          {{body | translate}}
+        </atom-text>
+      </div>
+      <div class="modal-footer">
+        <atom-button
+          [class]="'danger '"
+          (click)="annuler()"
+        >
+          {{nomAnnulation | translate}}
+        </atom-button>
+        <atom-button
+          [class]="'success ' + classConfirmation "
+          (click)="confirmer()"
+        >
+          {{nomValidation | translate}}
+        </atom-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="overlay-modal"
+  [class.modal-show]="isOpen"
+  [class.modal-hide]="!isOpen"
+  #background
+>
+
+</div>

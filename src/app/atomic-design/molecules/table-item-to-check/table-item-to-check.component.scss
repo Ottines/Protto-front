@@ -1,0 +1,23 @@
+@import "scss_config";
+
+.ellipse{
+  white-space: nowrap;
+  width: 80%;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-container {
+  height: 300px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+mat-cell {
+  text-align: left;
+}
+
+.mat-column-select {
+  flex: 0 0 10%;
+}

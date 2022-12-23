@@ -1,0 +1,44 @@
+@use "src/assets/scss/variables" as *;
+
+:host {
+
+  ::ng-deep atom-input-text {
+    input {
+      box-shadow: none !important;
+    }
+
+    input:focus {
+      &.is-valid {
+        border-color: $blue;
+      }
+
+      &.is-invalid {
+        border-color: $blue;
+      }
+    }
+  }
+
+  ::ng-deep .inline {
+    label {
+      display: inline-block;
+      margin-right: auto !important;
+      width: 50%;
+    }
+
+    input {
+      display: inline-block;
+      margin-left: auto !important;
+      width: 50%;
+    }
+  }
+
+  ::ng-deep .default {
+    atom-label > label {
+      width: 100% !important;
+    }
+
+    atom-input > input {
+      width: 100% !important;
+    }
+  }
+}

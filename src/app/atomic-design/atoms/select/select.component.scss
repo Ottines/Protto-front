@@ -1,0 +1,18 @@
+select {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+select option {
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+
+option {
+  height: 36px !important;
+}
+
+.dis option{
+  padding: 20px 0;
+
+}

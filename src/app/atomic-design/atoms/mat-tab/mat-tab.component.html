@@ -1,0 +1,12 @@
+<mat-tab>
+  <ng-template mat-tab-label>
+      {{label}}
+    <div
+      *ngIf="notif!==''"
+      class="notif-tab"
+    >
+      {{notif}}
+    </div>
+  </ng-template>
+  <ng-content></ng-content>
+</mat-tab>

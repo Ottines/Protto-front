@@ -1,0 +1,9 @@
+<div
+  *ngFor="let error of errorTable"
+  class="invalid-feedback"
+  [class.block]="displayed()"
+>
+  <atom-text *ngIf="control && hasError(error.errorCode)">
+    {{error.message}}
+  </atom-text>
+</div>

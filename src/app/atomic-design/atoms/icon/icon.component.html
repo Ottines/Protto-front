@@ -1,0 +1,16 @@
+<ng-template #content><ng-content></ng-content></ng-template>
+
+<mat-icon
+  *ngIf="!isText"
+  [class]="class"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</mat-icon>
+
+<span
+  *ngIf="isText"
+  [class]="class"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</span>
+

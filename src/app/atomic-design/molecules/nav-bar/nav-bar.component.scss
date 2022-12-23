@@ -1,0 +1,149 @@
+@use "src/assets/scss/variables" as *;
+
+ul .dropdown-menu.show {
+  left: -0.5rem;
+}
+
+nav{
+  max-height: 60px;
+}
+
+a.fill-div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
+
+.logo-container{
+  height: 40px;
+  vertical-align: center;
+  width: 80px;
+}
+
+.element-outside-burger {
+  flex-direction: row;
+  grid-area: 1/3/2/4;
+  justify-self: end;
+}
+
+.isNotConnected {
+  grid-area: 1/2/2/5;
+  justify-self: end;
+}
+
+ul.isNotConnected ul.dropdown-menu.show {
+  position: absolute;
+  right: 1rem;
+  left: unset;
+  width: inherit !important;
+}
+
+.navbar-collapse.collapse {
+  grid-area: 1 / 2 / 2 / 5;
+}
+
+.navbar {
+  .container-fluid {
+    display: grid;
+    grid-template-columns:  10% 55% 20% 15%;
+  }
+}
+
+
+@include media-breakpoint-between(xs, lg) {
+  ul .dropdown-menu.show {
+    position: absolute;
+    right: 1rem;
+    left: unset;
+    width: inherit !important;
+  }
+
+  .element-outside-burger {
+    margin-left: auto;
+    grid-column: 2/4;
+  }
+
+  .element-outside-burger.isNotConnected {
+    grid-area: 1/2/2/5;
+    justify-self: end;
+  }
+
+  div .navbar-collapse.collapse.show {
+
+    width: 200px;
+    top: 100%;
+    position: absolute;
+    z-index: 1500;
+    min-width: 10rem;
+    right: 0.5rem;
+
+    left: unset;
+    font-size: 1rem;
+    text-align: left;
+    list-style: none;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    border: 1px solid rgba(0, 0, 0, .15);
+
+  }
+
+  div .navbar-collapse.collapsing {
+    display: none;
+    -webkit-transition: none;
+    transition: none;
+  }
+
+}
+
+.right-menu {
+  position: absolute;
+  right: 1rem;
+  left: unset !important;
+}
+
+.navbar-toggler {
+  grid-area: 1/2/4/5;
+  justify-self: end;
+}
+
+::ng-deep atom-text .ellipse {
+  white-space: nowrap;
+  height: 100%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 4px;
+}
+
+.dropdown-item-not-clickable{
+  margin-left: 1rem;
+}
+
+a{
+  cursor : pointer;
+}
+
+::ng-deep li atom-button .right-side{
+  display:grid;
+  grid-template-columns: auto auto auto;
+  place-items: center;
+}
+
+.title-menu {
+  display: inline-block;
+  margin-right: auto !important;
+}
+
+.notif-menu {
+  display: inline-block;
+  margin-left: 15px !important;
+}
+
+.space {
+  display: inline-block;
+  margin-left: auto !important;
+  width: 15px;
+}

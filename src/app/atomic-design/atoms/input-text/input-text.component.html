@@ -1,0 +1,13 @@
+<input
+  id="{{id}}"
+  class="{{'form-control '+class}}"
+  type="text"
+  name="{{name}}"
+  placeholder="{{placeholder}}"
+  maxLength="{{maxLength}}"
+  [class.is-invalid]="control.invalid && control.touched"
+  [class.is-valid]="control.valid && control.touched"
+  [formControl]="control"
+  (focusin)="emitFocusIn()"
+  (focusout)="emitFocusOut()"
+>

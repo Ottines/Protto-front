@@ -1,0 +1,49 @@
+<ng-template #content><ng-content></ng-content></ng-template>
+
+<h1
+  *ngIf="taille===1"
+  id="{{idTitle}}"
+  class="{{classTitle}}"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</h1>
+
+<h2
+  *ngIf="taille===2"
+  id="{{idTitle}}"
+  class="{{classTitle}}"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</h2>
+
+<h3
+  *ngIf="taille===3"
+  id="{{idTitle}}"
+  class="{{classTitle}}"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</h3>
+
+<h4
+  *ngIf="taille===4"
+  id="{{idTitle}}"
+  class="{{classTitle}}"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</h4>
+
+<h5
+  *ngIf="taille===5"
+  id="{{idTitle}}"
+  class="{{classTitle}}"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</h5>
+
+<h6
+  *ngIf="taille===6"
+  id="{{idTitle}}"
+  class="{{classTitle}}"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</h6>

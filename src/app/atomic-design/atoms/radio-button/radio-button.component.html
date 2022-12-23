@@ -1,0 +1,10 @@
+<mat-radio-group [formControl]="control">
+  <mat-radio-button
+    class="me-3"
+    color="accent"
+    *ngFor="let option of radioOptions"
+    [value]="option.valeur"
+    [id]="option.idOption">
+    {{option.nomOption | translate}}
+  </mat-radio-button>
+</mat-radio-group>

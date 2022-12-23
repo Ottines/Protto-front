@@ -1,0 +1,38 @@
+<div class="{{classMolecule}}">
+
+  <atom-label
+    class="mb-2"
+    [value]="valueLabel | translate"
+  >
+  </atom-label>
+  <mat-table
+    class="table-container mat-elevation-z8 custom-table"
+    [dataSource]="dataSource"
+  >
+    <ng-container matColumnDef="projet">
+      <mat-header-cell *matHeaderCellDef>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div
+          class="ellipse"
+          [matTooltip]="row.name"
+        >
+          {{row.name}}
+        </div>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox
+          class="ms-auto"
+          [checked]="selection.isSelected(row)"
+          (change)="changeStateCheckBox(row)"
+        >
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

@@ -1,0 +1,41 @@
+@use "src/assets/scss/variables" as *;
+
+:host {
+
+  .inline {
+    atom-label {
+      align-self: center;
+      display: inline-block;
+      width: 50%;
+
+    }
+
+    atom-input-email {
+      display: inline-block;
+      width: 50%;
+    }
+  }
+
+  .default {
+    display: block;
+
+    atom-label {
+      width: 100%;
+    }
+  }
+
+  ::ng-deep atom-input-email input:focus {
+    border-color: $blue;
+    box-shadow: none;
+
+    &.is-valid {
+      border-color: $blue;
+      box-shadow: none;
+    }
+
+    &.is-invalid {
+      border-color: $blue;
+      box-shadow: none;
+    }
+  }
+}

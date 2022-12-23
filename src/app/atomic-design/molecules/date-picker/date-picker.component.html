@@ -1,0 +1,103 @@
+<div class="{{class}}">
+  <atom-label
+    [value]="label | translate"
+    [class]="'mb-2'"
+  >
+  </atom-label>
+  <div class="datePicker">
+    <mat-form-field
+      *ngIf="typePicker === 'picker'"
+      appearance="fill"
+      class="form-control"
+      [class.is-invalid]="isInvalid()"
+      [class.is-valid]="isValid()"
+    >
+      <input
+        matInput
+        placeholder="{{placeholder}}"
+        [disabled]="disableInput"
+        [matDatepicker]="picker"
+        [min]="minimumDate"
+        [max]="maximumDate"
+        [formControl]="$any(groupControl?.controls)[pickerDateName]"
+        [matDatepickerFilter]="filter"
+        (dateChange)="sendDate($event)"
+      >
+      <mat-hint
+        *ngIf="needHint() && placeholder===''"
+        class="form-picker"
+      >
+        {{hint}}
+      </mat-hint>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="picker"
+      >
+      </mat-datepicker-toggle>
+      <mat-datepicker
+        [disabled]="false"
+        #picker >
+      </mat-datepicker>
+
+    </mat-form-field>
+
+
+    <mat-form-field
+      *ngIf="typePicker === 'range'"
+      appearance="fill"
+      class="form-control"
+      [class.is-invalid]="isInvalid()"
+      [class.is-valid]="isValid()"
+    >
+
+      <mat-date-range-input
+        [rangePicker]="rangePicker"
+        [dateFilter]="filter"
+        [min]="minimumDate"
+        [max]="maximumDate"
+      >
+        <input
+          matStartDate
+          matInput
+          placeholder="{{placeHolderStart}}"
+          [disabled]="disableInput"
+          [formControl]="$any(groupControl?.controls)[startDateName]"
+          (dateChange)="sendStartDate($event)"
+        >
+        <input
+          matEndDate
+          matInput
+          placeholder="{{placeHolderEnd}}"
+          [disabled]="disableInput"
+          [formControl]="$any(groupControl?.controls)[endDateName]"
+          (dateChange)="sendEndDate($event)"
+        >
+      </mat-date-range-input>
+
+      <mat-hint
+        *ngIf="needHint()"
+        class="form-picker"
+      >
+        {{hint}} – {{hint}}
+      </mat-hint>
+
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="rangePicker"
+      >
+      </mat-datepicker-toggle>
+      <mat-date-range-picker
+        [disabled]="false"
+        #rangePicker>
+      </mat-date-range-picker>
+    </mat-form-field>
+
+
+    <atom-invalid-message
+      [groupControl]="groupControl"
+      [errorTable]="errorTable"
+    >
+    </atom-invalid-message>
+
+  </div>
+</div>

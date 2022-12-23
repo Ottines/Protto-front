@@ -1,0 +1,274 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+
+    <div class="logo-container">
+      <div class="logo">
+        <ng-container *ngIf="getRole()==='ADMIN_IDS'">
+          <a routerLink="/projets" class="fill-div"></a>
+        </ng-container>
+        <ng-container *ngIf="getRole()==='CLIENT'">
+          <a routerLink="/devis" class="fill-div"></a>
+        </ng-container>
+        <ng-container *ngIf="!getRole()">
+          <a routerLink="/" class="fill-div"></a>
+        </ng-container>
+      </div>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="navbarText">
+
+      <ul class="navbar-nav me-auto my-2  " *ngIf="isLoggedIn()">
+
+        <li class="nav-item dropdown ms-auto " *ngFor="let dropdown of listDropdown">
+          <atom-button
+            aria-expanded="false"
+            data-bs-toggle="dropdown"
+            [class]="'navbar-brand  dropdown-toggle '"
+            [id]="'scroll'+dropdown.name"
+          >
+            {{dropdown.name | translate}}
+          </atom-button>
+
+          <ul class="dropdown-menu ms-2" [attr.aria-labelledby]="'scroll'+dropdown.name">
+            <li *ngFor="let val of dropdown.values">
+              <atom-a
+                data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"
+                [routerLink]="val.route"
+                [class]="'dropdown-item '"
+              >
+                  {{val.name | translate}}
+              </atom-a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item  ms-auto" *ngFor="let button of listButton">
+          <atom-button [class]="'navbar-brand'"
+                       [matTooltip]="button.name"
+                       (click)="routerLink(button.route)">
+            <div class="container-text-notif">
+              <div class="title-menu">
+                {{button.name | translate}}
+              </div>
+              <div
+                *ngIf="button.notif"
+                class="notif-nav notif-menu"
+              >
+                {{button.notif}}
+              </div>
+            </div>
+          </atom-button>
+        </li>
+
+      </ul>
+
+      <ul class="navbar-nav ms-auto my-2 ">
+
+
+        <li class="nav-item dropdown align-middle ms-auto " *ngIf="isLoggedIn()">
+
+
+          <atom-button [class]="' dropdown-toggle navbar-brand user right-side'"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+
+            <atom-icon [class]="'text align-middle '">
+              person
+            </atom-icon>
+            <atom-text [class]="'ellipse align-middle'">
+              {{getUsername()}}
+            </atom-text>
+
+          </atom-button>
+
+          <ul class="dropdown-menu right-menu">
+
+
+            <li *ngFor="let val of dropdownUser.values">
+              <atom-a *ngIf="val.name==='Deconnexion'"
+                      [class]="'dropdown-item'"
+                      routerLink="{{val.route}}"
+
+                      (click)="deconnexion()"
+                      data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+              >
+                {{val.name | translate}}
+              </atom-a>
+              <atom-a *ngIf="val.name!=='Deconnexion'"
+                      [class]="'dropdown-item'"
+                      routerLink="{{val.route}}">
+                {{val.name | translate}}
+              </atom-a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="dropdown-item-not-clickable">
+              <mat-label><i class="fa fa-sun-o"></i></mat-label>
+              <mat-slide-toggle class="pull-right me-1"
+                                [name]="LIGHT_THEME"
+                                [checked]="sameTheme(LIGHT_THEME)"
+                                color="warn"
+                                (change)="changeTheme($event)"
+                                #lightTheme>
+              </mat-slide-toggle>
+            </li>
+            <li class="dropdown-item-not-clickable">
+              <mat-label><i class="fa fa-moon-o"></i></mat-label>
+              <mat-slide-toggle class="pull-right me-1"
+                                [name]="DARK_THEME"
+                                [checked]="sameTheme(DARK_THEME)"
+                                color="warn"
+                                (change)="changeTheme($event)"
+                                #darkTheme
+              >
+              </mat-slide-toggle>
+            </li>
+            <li class="dropdown-item-not-clickable">
+              <mat-label><i class="fa fa-wheelchair"></i></mat-label>
+              <mat-slide-toggle class="pull-right me-1"
+                                color="warn"
+                                [name]="ACCESSIBLE_THEME"
+                                [checked]="sameTheme(ACCESSIBLE_THEME)"
+                                (change)="changeTheme($event)"
+                                #accessibleTheme>
+              </mat-slide-toggle>
+            </li>
+
+          </ul>
+        </li>
+
+
+      </ul>
+
+    </div>
+
+    <ul class="nav element-outside-burger navbar-nav"
+        [class.isNotConnected]="!isLoggedIn()"
+    >
+      <li class="nav-item align-middle ms-auto" *ngIf="isLoggedIn()">
+        <atom-button
+          [matTooltip]="getPreviousRoute()"
+          [disabled]="!hasPreviousRoute()"
+          (click)="back()">
+          <atom-icon [class]="'text align-middle'">
+            arrow_back
+          </atom-icon>
+        </atom-button>
+
+        <atom-button
+          [matTooltip]="getNextRoute()"
+          [disabled]="!hasNextRoute()"
+          (click)="forward()">
+          <atom-icon [class]="'text align-middle'">
+            arrow_forward
+          </atom-icon>
+        </atom-button>
+      </li>
+
+
+      <li *ngIf="!isLoggedIn()" class="nav-item dropdown ms-auto align-middle ">
+
+        <div class="btn-group">
+          <atom-button [class]=" ' dropdown-toggle navbar-brand align-middle'" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+            {{'Theme'}}
+          </atom-button>
+
+          <ul class="dropdown-menu">
+            <li class="dropdown-item-not-clickable">
+              <mat-label><i class="fa fa-sun-o"></i></mat-label>
+              <mat-slide-toggle
+                class="pull-right me-1"
+                color="warn"
+                [name]="LIGHT_THEME"
+                [checked]="sameTheme(LIGHT_THEME)"
+                (change)="changeTheme($event)"
+                #lightTheme
+              >
+              </mat-slide-toggle>
+            </li>
+            <li class="dropdown-item-not-clickable">
+              <mat-label><i class="fa fa-moon-o"></i></mat-label>
+              <mat-slide-toggle
+                class="pull-right me-1"
+                color="warn"
+                [name]="DARK_THEME"
+                [checked]="sameTheme(DARK_THEME)"
+                (change)="changeTheme($event)"
+                #darkTheme
+              >
+              </mat-slide-toggle>
+            </li>
+            <li class="dropdown-item-not-clickable">
+              <mat-label>
+                <i class="fa fa-wheelchair"></i>
+              </mat-label>
+              <mat-slide-toggle
+                class="pull-right me-1"
+                color="warn"
+                [name]="ACCESSIBLE_THEME"
+                [checked]="sameTheme(ACCESSIBLE_THEME)"
+                (change)="changeTheme($event)"
+                #accessibleTheme
+              >
+              </mat-slide-toggle>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="nav-item dropdown ms-auto align-middle ">
+
+        <div class="btn-group">
+          <atom-button [class]=" ' dropdown-toggle navbar-brand align-middle'" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+            <i class="flag-icon flag-icon-{{langToDisplay.flag}}"
+            ></i>
+          </atom-button>
+          <ul class="dropdown-menu">
+            <li *ngFor="let val of dropdownLanguage">
+              <atom-a
+                data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"
+                [class]="'dropdown-item '"
+                (click)="changeLang(val.lang)"
+              >
+                <div style="float: left; width:25%;">
+                  <i class="flag-icon flag-icon-{{val.flag}}"></i>
+                </div>
+                <div>
+                  {{val.name}}
+                </div>
+
+              </atom-a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+    </ul>
+
+    <button *ngIf="isLoggedIn()"
+            class="navbar-toggler align-middle"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <mat-icon class="navbar-toggler-icon text" style="height: 24px;">
+        menu
+      </mat-icon>
+    </button>
+
+  </div>
+
+</nav>

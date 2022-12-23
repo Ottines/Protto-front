@@ -1,0 +1,16 @@
+<atom-button
+  [id]="id"
+  [class]="class"
+  [type]="type"
+  [disabled]="disabled"
+  (clickEmitter)="click()"
+>
+  <div class="align-btn-icon">
+    <atom-icon>
+      {{nameIcon}}
+    </atom-icon>
+    <span class="hide">
+      {{nameButton}}
+    </span>
+  </div>
+</atom-button>
